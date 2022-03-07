@@ -2,4 +2,4 @@
 Player de vídeo feito em Javascript puro.
 
 # Link
-henrymedeiros.github.io/video-player/
+[Projeto](henrymedeiros.github.io/video-player/)
