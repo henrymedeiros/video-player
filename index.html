@@ -9,20 +9,25 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <!-- Car Racing (1080P)-->
-        <!-- https://pixabay.com/videos/download/video-41758_source.mp4?attachment -->
-        <!-- Lake (4K) -->
-        <!-- https://pixabay.com/videos/download/video-28745_source.mp4?attachment -->
-        <!-- Ocean (720P)-->
-        <!-- https://pixabay.com/videos/download/video-31377_tiny.mp4?attachment -->
+        
         <div class="player">
+            <div class="overlay">
+                
+                    <i class="fas fa-play play-button">
+                    
+                    </i>
+                
+                
+            </div>
+            
             <video src="nature.mp4" class="video" playsinline></video>
             <div class="show-controls">
                 <div class="controls-container">
                     <div class="progress-range" title="seek">
                         <div class="progress-bar">
-
+                            <div class="progress-circle"></div>
                         </div>
+                        
                     </div>
                     <div class="control-group">
                         <div class="controls-left">
@@ -40,6 +45,10 @@
 
                                     </div>
                                 </div>
+                            </div>
+                            <!-- Rewind -->
+                            <div class="rewind">
+                                <i class="fas fa-backward" title="Rewind 10 Seconds"></i>
                             </div>
                         </div>
                         <div class="controls-right">
@@ -68,6 +77,7 @@
                 </div>
             </div>
         </div>
+       
         <!-- Script -->
         <script src="script.js"></script>
     </body>

@@ -1,8 +1,10 @@
 const player = document.querySelector('.player');
+const overlay = document.querySelector('.overlay');
 const video = document.querySelector('video')
 // Progress Elements
 const progressRange = document.querySelector('.progress-range')
 const progressBar = document.querySelector('.progress-bar')
+const progressCircle = document.querySelector('.progress-circle')
 const playBtn = document.querySelector('#play-btn')
 // Volume Elements
 const volumeIcon = document.getElementById('volume-icon');
@@ -13,8 +15,10 @@ const timeElapsed = document.querySelector('.time-elapsed')
 const duration = document.querySelector('.time-duration')
 const speed = document.querySelector('.player-speed');
 const fullscreenBtn = document.querySelector('.fullscreen')
+const rewind = document.querySelector('.rewind')
 
 // Play & Pause ----------------------------------- //
+overlay.style.backgroundColor = 'rgba(0,0,0,0.5)'
 function showPlayIcon(){
     playBtn.classList.replace('fa-pause', 'fa-play')
     playBtn.setAttribute('title', 'Play')
@@ -23,11 +27,13 @@ function showPlayIcon(){
 function togglePlay() {
     if(video.paused){
         video.play()
+        overlay.style.visibility = 'hidden'
         playBtn.classList.replace('fa-play', 'fa-pause')
         playBtn.setAttribute('title', 'Pause')
     }
     else {
         video.pause();
+        overlay.style.visibility = ''
         showPlayIcon();
     }
 }
@@ -45,7 +51,9 @@ function displayTime(time){
 }
 
 function updateProgress(){
-    progressBar.style.width = `${(video.currentTime/video.duration)*100}%`
+    let progressPercentage = video.currentTime/video.duration *100
+    progressBar.style.width = `${(progressPercentage)}%`
+    progressCircle.style.left = `${(progressPercentage)}%`
     timeElapsed.textContent = `${displayTime(video.currentTime)} /`
     duration.textContent = `${displayTime(video.duration)}`;
     
@@ -95,6 +103,10 @@ function toggleMute() {
 
 let lastVolume = 1
 
+// Rewind the video
+function rewindVideo(){
+  video.currentTime -=10
+}
 
 // Change Playback Speed -------------------- //
 function changeSpeed() {
@@ -164,3 +176,4 @@ volumeRange.addEventListener('click', changeVolume)
 volumeIcon.addEventListener('click', toggleMute);
 speed.addEventListener('change', changeSpeed);
 fullscreenBtn.addEventListener('click', toggleFullscreen);
+rewind.addEventListener('click', rewindVideo);
